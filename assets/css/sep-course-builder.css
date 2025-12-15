@@ -1,0 +1,159 @@
+/* Course Builder Styles */
+
+#sep-course-builder-container {
+    padding: 20px 0;
+}
+
+.sep-builder-toolbar {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.sep-curriculum-builder {
+    min-height: 300px;
+}
+
+.sep-section {
+    margin-bottom: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.sep-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #f0f0f1;
+    cursor: pointer;
+}
+
+.sep-section-toggle {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sep-section-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.sep-section-title {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.sep-section-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.sep-remove-section {
+    color: #d63638;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.sep-section-content {
+    padding: 15px;
+    display: none;
+}
+
+.sep-section-content.expanded {
+    display: block;
+}
+
+.sep-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.sep-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sep-item:hover {
+    background: #f0f0f1;
+    border-color: #999;
+}
+
+.sep-item-move {
+    cursor: move;
+    color: #666;
+    font-size: 1.2em;
+}
+
+.sep-item-type,
+.sep-item-content {
+    padding: 6px 10px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+.sep-item-content {
+    flex: 1;
+}
+
+.sep-add-item-to-section {
+    margin-top: 10px;
+}
+
+.sep-remove-item {
+    color: #d63638;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Sortable styles */
+.ui-sortable-placeholder {
+    height: 40px;
+    background: #e6f7ff;
+    border: 2px dashed #91d5ff;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sep-section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .sep-section-title {
+        width: 100%;
+    }
+    
+    .sep-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .sep-item-type,
+    .sep-item-content {
+        width: 100%;
+    }
+}

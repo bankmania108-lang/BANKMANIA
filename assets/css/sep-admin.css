@@ -1,0 +1,398 @@
+/* Admin-specific styles for the Smart Exam Platform */
+
+/* Main container styles */
+.sep-admin-container,
+.sep-questions-container,
+.sep-courses-container,
+.sep-curriculum-container,
+.sep-students-container,
+.sep-reports-container,
+.sep-settings-container {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    border-radius: 4px;
+}
+
+/* Tab navigation styles */
+.sep-admin-tabs .nav-tab-wrapper,
+.sep-questions-tabs .nav-tab-wrapper,
+.sep-courses-tabs .nav-tab-wrapper,
+.sep-curriculum-tabs .nav-tab-wrapper,
+.sep-students-tabs .nav-tab-wrapper,
+.sep-reports-tabs .nav-tab-wrapper,
+.sep-settings-tabs .nav-tab-wrapper {
+    margin: 0;
+    padding: 0 20px;
+    border-bottom: 1px solid #ccd0d4;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.sep-admin-tab-content,
+.sep-questions-tab-content,
+.sep-courses-tab-content,
+.sep-curriculum-tab-content,
+.sep-students-tab-content,
+.sep-reports-tab-content,
+.sep-settings-tab-content {
+    padding: 20px;
+}
+
+.sep-admin-tab-pane,
+.sep-questions-tab-pane,
+.sep-courses-tab-pane,
+.sep-curriculum-tab-pane,
+.sep-students-tab-pane,
+.sep-reports-tab-pane,
+.sep-settings-tab-pane {
+    display: none;
+}
+
+.sep-admin-tab-pane.active,
+.sep-questions-tab-pane.active,
+.sep-courses-tab-pane.active,
+.sep-curriculum-tab-pane.active,
+.sep-students-tab-pane.active,
+.sep-reports-tab-pane.active,
+.sep-settings-tab-pane.active {
+    display: block;
+}
+
+/* Stats grid for dashboard */
+.sep-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.sep-stat-card {
+    background: #f9f9f9;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sep-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sep-stat-card h4,
+.sep-stat-card h5 {
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.sep-stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    color: #0073aa;
+}
+
+.sep-stat-change {
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
+}
+
+.sep-stat-increase {
+    color: #0a6516;
+}
+
+.sep-stat-decrease {
+    color: #d63638;
+}
+
+/* Quick actions for dashboard */
+.sep-quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sep-quick-action-card {
+    display: block;
+    background: #f9f9f9;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #32373c;
+    transition: all 0.3s ease;
+}
+
+.sep-quick-action-card:hover {
+    background: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sep-quick-action-card .dashicons {
+    font-size: 3em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.sep-quick-action-card h4 {
+    margin: 10px 0;
+}
+
+.sep-quick-action-card p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Progress bars */
+.sep-progress-bar {
+    width: 100px;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sep-progress-fill {
+    height: 100%;
+    background-color: #0073aa;
+    transition: width 0.3s ease;
+}
+
+.sep-progress-percent {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Status badges */
+.sep-status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+.sep-status-active {
+    background-color: #d7f0db;
+    color: #0a6516;
+}
+
+.sep-status-pass {
+    background-color: #d7f0db;
+    color: #0a6516;
+}
+
+.sep-status-fail {
+    background-color: #fdd;
+    color: #d63638;
+}
+
+/* Course structure builder */
+.sep-course-structure-builder {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sep-available-content,
+.sep-course-curriculum {
+    flex: 1;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 15px;
+    min-height: 400px;
+}
+
+.sep-content-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.sep-content-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.sep-content-item:hover {
+    background-color: #f9f9f9;
+}
+
+.sep-content-icon {
+    width: 20px;
+    text-align: center;
+}
+
+.sep-content-type {
+    margin-left: auto;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.sep-curriculum-container {
+    min-height: 300px;
+    border: 2px dashed #ccd0d4;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.sep-curriculum-placeholder {
+    text-align: center;
+    color: #999;
+    padding: 40px 0;
+}
+
+.sep-curriculum-item {
+    padding: 10px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+}
+
+.sep-item-move {
+    cursor: move;
+}
+
+.sep-item-actions {
+    margin-left: auto;
+}
+
+.sep-item-actions .button-link {
+    color: #d63638;
+    text-decoration: none;
+}
+
+.sep-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f0f0f1;
+    border-radius: 4px;
+}
+
+.sep-section-title {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.sep-section-content {
+    margin-left: 20px;
+    padding: 10px;
+    border-left: 2px solid #ccd0d4;
+}
+
+/* Chart placeholders */
+.sep-chart-container {
+    background: #f9f9f9;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+.sep-chart-placeholder {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 40px;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Export options */
+.sep-export-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.sep-export-card {
+    background: #f9f9f9;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.sep-export-card h4 {
+    margin-top: 0;
+}
+
+/* Engagement breakdown */
+.sep-engagement-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sep-engagement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sep-engagement-label {
+    flex: 1;
+    text-align: left;
+}
+
+.sep-engagement-value {
+    width: 40px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Drag and drop styles */
+.drop-hover {
+    border-color: #0073aa !important;
+    background-color: #f0f7ff !important;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sep-course-structure-builder {
+        flex-direction: column;
+    }
+    
+    .sep-stats-grid,
+    .sep-quick-actions-grid,
+    .sep-export-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .sep-reports-charts .sep-chart-row {
+        grid-template-columns: 1fr !important;
+    }
+}

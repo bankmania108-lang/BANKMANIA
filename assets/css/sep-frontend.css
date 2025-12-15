@@ -585,6 +585,172 @@
     outline-offset: 2px;
 }
 
+/* Course container styles */
+.sep-course-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.sep-course-header {
+    display: flex;
+    flex-direction: column;
+    background: #f8f9fa;
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.sep-course-thumbnail {
+    margin-bottom: 20px;
+}
+
+.sep-course-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.sep-course-info h1 {
+    margin: 0 0 15px 0;
+    font-size: 2em;
+    color: #333;
+}
+
+.sep-course-description {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.sep-course-meta {
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.sep-course-meta p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.sep-course-meta strong {
+    color: #333;
+}
+
+.sep-course-curriculum {
+    padding: 30px;
+}
+
+.sep-course-curriculum h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0073aa;
+    color: #333;
+}
+
+.sep-curriculum-section {
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.sep-section-title {
+    background: #f0f0f1;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+}
+
+.sep-curriculum-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sep-curriculum-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.sep-curriculum-item:last-child {
+    border-bottom: none;
+}
+
+.sep-curriculum-item:hover {
+    background-color: #f9f9f9;
+}
+
+.sep-curriculum-item.sep-item-completed {
+    background-color: #f0fff4;
+}
+
+.sep-item-icon {
+    margin-right: 12px;
+    color: #0073aa;
+    font-size: 1.2em;
+}
+
+.sep-curriculum-item a {
+    flex: 1;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.sep-curriculum-item a:hover {
+    color: #0073aa;
+}
+
+.sep-item-status {
+    color: #46b450;
+    margin-left: 10px;
+}
+
+.sep-course-actions {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.sep-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.sep-btn-primary {
+    background-color: #0073aa;
+    color: white;
+}
+
+.sep-btn-primary:hover {
+    background-color: #005a87;
+    transform: translateY(-2px);
+}
+
+.sep-btn:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
 /* Print styles */
 @media print {
     .sep-immersive-mode {

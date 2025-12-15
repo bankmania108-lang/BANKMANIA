@@ -544,5 +544,63 @@
         // Custom HTML can be injected here via external plugins
         // This allows for sharing, upsells, etc. after results
     });
+    
+    // Course enrollment functionality
+    $(document).on('click', '.sep-enroll-course-btn', function(e) {
+        e.preventDefault();
+        
+        var courseId = $(this).data('course-id');
+        
+        if (!courseId) {
+            alert('Course ID not found');
+            return;
+        }
+        
+        // Show loading state
+        var btn = $(this);
+        var originalText = btn.text();
+        btn.text('Enrolling...').prop('disabled', true);
+        
+        $.post(sep_ajax.ajax_url, {
+            action: 'sep_enroll_in_course',
+            course_id: courseId,
+            nonce: sep_ajax.nonce
+        }, function(response) {
+            if (response.success) {
+                btn.text('Enrolled').removeClass('sep-btn-primary').addClass('sep-btn-success');
+                alert('Successfully enrolled in the course!');
+            } else {
+                btn.text(originalText).prop('disabled', false);
+                alert('Error enrolling in course: ' + response.data);
+            }
+        }).fail(function() {
+            btn.text(originalText).prop('disabled', false);
+            alert('Connection error. Please try again.');
+        });
+    });
+    
+    // Course start functionality
+    $(document).on('click', '.sep-start-course-btn', function(e) {
+        e.preventDefault();
+        
+        var courseId = $(this).data('course-id');
+        
+        if (!courseId) {
+            alert('Course ID not found');
+            return;
+        }
+        
+        // Redirect to first lesson/quiz in the course
+        window.location.href = sep_ajax.course_url + '?course=' + courseId;
+    });
+    
+    // Curriculum section toggle functionality
+    $(document).on('click', '.sep-section-toggle', function() {
+        var content = $(this).closest('.sep-section-header').siblings('.sep-section-content');
+        var toggle = $(this);
+        
+        content.slideToggle();
+        toggle.toggleClass('expanded');
+    });
 
 })(jQuery);
