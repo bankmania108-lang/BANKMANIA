@@ -18,6 +18,9 @@ define('SEP_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('SEP_VERSION', '1.0.0');
 
 // Load plugin files
+require_once SEP_PLUGIN_PATH . 'includes/class-sep-admin-menu.php';
+require_once SEP_PLUGIN_PATH . 'includes/class-sep-course-builder.php';
+require_once SEP_PLUGIN_PATH . 'includes/class-sep-curriculum.php';
 require_once SEP_PLUGIN_PATH . 'includes/class-sep-core.php';
 require_once SEP_PLUGIN_PATH . 'includes/class-sep-exams.php';
 require_once SEP_PLUGIN_PATH . 'includes/class-sep-questions.php';

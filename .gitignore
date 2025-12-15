@@ -1,46 +1,38 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.class
-*.exe
-*.dll
-*.so
-*.a
-*.out
+# WordPress specific
+wp-content/cache/
+wp-content/uploads/
+*.sql
+wp-config.php
+wp-config-sample.php
 
 # Dependencies
+vendor/
 node_modules/
-venv/
-.venv/
-.env
-.env.local
-*.env.*
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
 
 # Logs and temp files
 *.log
 *.tmp
 *.swp
-*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
 
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Distribution / packaging
-dist/
-build/
-*.tar.gz
-*.zip
-
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
 ```
