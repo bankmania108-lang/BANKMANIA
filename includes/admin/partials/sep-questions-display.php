@@ -57,7 +57,10 @@
                                     $subjects = wp_get_post_terms( $question->ID, 'sep_subjects' );
                                     $subject_names = array();
                                     foreach ( $subjects as $subject ) {
-                                        $subject_names[] = is_object($subject) ? $subject->name : $subject['name'];
+                                        $name = is_object($subject) ? (isset($subject->name) ? $subject->name : '') : (isset($subject['name']) ? $subject['name'] : '');
+                                        if (!empty($name)) {
+                                            $subject_names[] = $name;
+                                        }
                                     }
                                     $subject_list = implode( ', ', $subject_names );
                                     ?>
@@ -138,9 +141,11 @@
                                         'hide_empty' => false,
                                     ) );
                                     foreach ( $subjects as $subject ) {
-                                        $term_id = is_object($subject) ? $subject->term_id : $subject['term_id'];
-                                        $name = is_object($subject) ? $subject->name : $subject['name'];
-                                        echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
+                                        $term_id = is_object($subject) ? (isset($subject->term_id) ? $subject->term_id : '') : (isset($subject['term_id']) ? $subject['term_id'] : '');
+                                        $name = is_object($subject) ? (isset($subject->name) ? $subject->name : '') : (isset($subject['name']) ? $subject['name'] : '');
+                                        if (!empty($term_id)) {
+                                            echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
+                                        }
                                     }
                                     ?>
                                 </select>
@@ -205,9 +210,11 @@
                                         'hide_empty' => false,
                                     ) );
                                     foreach ( $subjects as $subject ) {
-                                        $term_id = is_object($subject) ? $subject->term_id : $subject['term_id'];
-                                        $name = is_object($subject) ? $subject->name : $subject['name'];
-                                        echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
+                                        $term_id = is_object($subject) ? (isset($subject->term_id) ? $subject->term_id : '') : (isset($subject['term_id']) ? $subject['term_id'] : '');
+                                        $name = is_object($subject) ? (isset($subject->name) ? $subject->name : '') : (isset($subject['name']) ? $subject['name'] : '');
+                                        if (!empty($term_id)) {
+                                            echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
+                                        }
                                     }
                                     ?>
                                 </select>
