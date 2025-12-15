@@ -57,7 +57,7 @@
                                     $subjects = wp_get_post_terms( $question->ID, 'sep_subjects' );
                                     $subject_names = array();
                                     foreach ( $subjects as $subject ) {
-                                        $subject_names[] = $subject->name;
+                                        $subject_names[] = is_object($subject) ? $subject->name : $subject['name'];
                                     }
                                     $subject_list = implode( ', ', $subject_names );
                                     ?>
@@ -138,7 +138,9 @@
                                         'hide_empty' => false,
                                     ) );
                                     foreach ( $subjects as $subject ) {
-                                        echo '<option value="' . esc_attr( $subject->term_id ) . '">' . esc_html( $subject->name ) . '</option>';
+                                        $term_id = is_object($subject) ? $subject->term_id : $subject['term_id'];
+                                        $name = is_object($subject) ? $subject->name : $subject['name'];
+                                        echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -203,7 +205,9 @@
                                         'hide_empty' => false,
                                     ) );
                                     foreach ( $subjects as $subject ) {
-                                        echo '<option value="' . esc_attr( $subject->term_id ) . '">' . esc_html( $subject->name ) . '</option>';
+                                        $term_id = is_object($subject) ? $subject->term_id : $subject['term_id'];
+                                        $name = is_object($subject) ? $subject->name : $subject['name'];
+                                        echo '<option value="' . esc_attr( $term_id ) . '">' . esc_html( $name ) . '</option>';
                                     }
                                     ?>
                                 </select>

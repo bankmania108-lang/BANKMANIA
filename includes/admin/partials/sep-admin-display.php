@@ -35,19 +35,19 @@
                     <div class="sep-stats-grid">
                         <div class="sep-stat-card">
                             <h4><?php _e( 'Total Exams', 'sep-smart-exam-platform' ); ?></h4>
-                            <p class="sep-stat-number"><?php echo wp_count_posts( 'sep_exams' )->publish; ?></p>
+                            <p class="sep-stat-number"><?php $count = wp_count_posts( 'sep_exams' ); echo isset($count->publish) ? $count->publish : 0; ?></p>
                         </div>
                         <div class="sep-stat-card">
                             <h4><?php _e( 'Total Questions', 'sep-smart-exam-platform' ); ?></h4>
-                            <p class="sep-stat-number"><?php echo wp_count_posts( 'sep_questions' )->publish; ?></p>
+                            <p class="sep-stat-number"><?php $count = wp_count_posts( 'sep_questions' ); echo isset($count->publish) ? $count->publish : 0; ?></p>
                         </div>
                         <div class="sep-stat-card">
                             <h4><?php _e( 'Total Attempts', 'sep-smart-exam-platform' ); ?></h4>
-                            <p class="sep-stat-number"><?php echo wp_count_posts( 'sep_attempts' )->publish; ?></p>
+                            <p class="sep-stat-number"><?php $count = wp_count_posts( 'sep_attempts' ); echo isset($count->publish) ? $count->publish : 0; ?></p>
                         </div>
                         <div class="sep-stat-card">
                             <h4><?php _e( 'Total Courses', 'sep-smart-exam-platform' ); ?></h4>
-                            <p class="sep-stat-number"><?php echo wp_count_posts( 'sep_course' )->publish; ?></p>
+                            <p class="sep-stat-number"><?php $count = wp_count_posts( 'sep_course' ); echo isset($count->publish) ? $count->publish : 0; ?></p>
                         </div>
                     </div>
                 </div>
