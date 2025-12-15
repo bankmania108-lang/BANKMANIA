@@ -7,6 +7,8 @@ class SEP_Shortcodes {
         add_shortcode('sep_result', array($this, 'result_shortcode'));
         add_shortcode('sep_dashboard', array($this, 'dashboard_shortcode'));
         add_shortcode('sep_leaderboard', array($this, 'leaderboard_shortcode'));
+        add_shortcode('sep_course', array($this, 'course_shortcode'));
+        add_shortcode('sep_curriculum', array($this, 'curriculum_shortcode'));
     }
     
     /**
@@ -295,6 +297,105 @@ class SEP_Shortcodes {
         
         $content = ob_get_clean();
         return $content;
+    }
+    
+    /**
+     * Course shortcode - Displays a single course
+     */
+    public function course_shortcode($atts) {
+        $atts = shortcode_atts(array(
+            'id' => 0,
+            'show_curriculum' => 'true'
+        ), $atts);
+
+        if (!$atts['id']) {
+            return '<p>' . __('Please specify a course ID.', 'sep-smart-exam-platform') . '</p>';
+        }
+
+        $course = get_post($atts['id']);
+        if (!$course || $course->post_type !== 'sep_course') {
+            return '<p>' . __('Course not found.', 'sep-smart-exam-platform') . '</p>';
+        }
+
+        // Get curriculum if needed
+        $curriculum = array();
+        if ($atts['show_curriculum'] === 'true') {
+            $curriculum_obj = new SEP_Curriculum('sep-smart-exam-platform', '1.0.0');
+            $curriculum = $curriculum_obj->get_course_curriculum($atts['id']);
+        }
+
+        ob_start();
+        ?>
+        <div class="sep-container">
+            <div class="sep-course-container">
+                <div class="sep-course-header">
+                    <?php if (has_post_thumbnail($course->ID)) : ?>
+                        <div class="sep-course-thumbnail">
+                            <?php echo get_the_post_thumbnail($course->ID, 'large'); ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="sep-course-info">
+                        <h1><?php echo esc_html($course->post_title); ?></h1>
+                        <?php if (!empty($course->post_content)) : ?>
+                            <div class="sep-course-description">
+                                <?php echo apply_filters('the_content', $course->post_content); ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="sep-course-meta">
+                            <p><strong><?php _e('Duration:', 'sep-smart-exam-platform'); ?></strong> <?php echo get_post_meta($course->ID, '_sep_course_duration', true); ?></p>
+                            <p><strong><?php _e('Lessons:', 'sep-smart-exam-platform'); ?></strong> <?php echo get_post_meta($course->ID, '_sep_course_lessons_count', true); ?></p>
+                            <p><strong><?php _e('Quizzes:', 'sep-smart-exam-platform'); ?></strong> <?php echo get_post_meta($course->ID, '_sep_course_quizzes_count', true); ?></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <?php if ($atts['show_curriculum'] === 'true' && !empty($curriculum)) : ?>
+                    <div class="sep-course-curriculum">
+                        <h2><?php _e('Course Curriculum', 'sep-smart-exam-platform'); ?></h2>
+                        <?php
+                        $curriculum_obj = new SEP_Curriculum('sep-smart-exam-platform', '1.0.0');
+                        echo $curriculum_obj->get_formatted_curriculum($atts['id']);
+                        ?>
+                    </div>
+                <?php endif; ?>
+                
+                <div class="sep-course-actions">
+                    <?php if (is_user_logged_in()) : ?>
+                        <button class="sep-btn sep-btn-primary sep-enroll-course-btn" data-course-id="<?php echo $course->ID; ?>">
+                            <?php _e('Enroll in Course', 'sep-smart-exam-platform'); ?>
+                        </button>
+                        <button class="sep-btn sep-start-course-btn" data-course-id="<?php echo $course->ID; ?>">
+                            <?php _e('Start Learning', 'sep-smart-exam-platform'); ?>
+                        </button>
+                    <?php else : ?>
+                        <a href="<?php echo wp_login_url(get_permalink($course->ID)); ?>" class="sep-btn sep-btn-primary">
+                            <?php _e('Login to Enroll', 'sep-smart-exam-platform'); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+    
+    /**
+     * Curriculum shortcode - Displays curriculum for a course
+     */
+    public function curriculum_shortcode($atts) {
+        $atts = shortcode_atts(array(
+            'course_id' => 0
+        ), $atts);
+
+        if (!$atts['course_id']) {
+            return '<p>' . __('Please specify a course ID.', 'sep-smart-exam-platform') . '</p>';
+        }
+
+        $curriculum_obj = new SEP_Curriculum('sep-smart-exam-platform', '1.0.0');
+        $curriculum = $curriculum_obj->get_formatted_curriculum($atts['course_id']);
+
+        return '<div class="sep-container"><div class="sep-curriculum-shortcode">' . $curriculum . '</div></div>';
     }
     
     /**
